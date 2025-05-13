@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite name="Togile" verbose="10">
-	<test name="Login">
-		<classes>
-			<class name="testcases.URL_landing_Page"/>
-		</classes>
-	</test>
+    <test name="Login">
+        <classes>
+            <class name="testcases.Leads">
+            </class>
+        </classes>
+    </test>
 </suite>

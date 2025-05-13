@@ -89,7 +89,7 @@ public class elementfunction extends Baseclass {
         List<WebElement> dropdownOption = wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(
                 By.xpath(dropdownlocator)));
 
-        // Print all options
+        // Print all optionsX
         for (WebElement option : dropdownOption) {
             System.out.print(option.getText() + "--,,--");
         }

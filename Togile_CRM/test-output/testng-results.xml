@@ -1,25 +1,97 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
+<testng-results ignored="0" total="2" passed="1" failed="1" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2025-03-21T14:34:15 IST" name="Default suite" finished-at="2025-03-21T14:34:31 IST" duration-ms="15559">
+  <suite started-at="2025-05-06T10:46:17 IST" name="Default suite" finished-at="2025-05-06T10:46:49 IST" duration-ms="31518">
     <groups>
     </groups>
-    <test started-at="2025-03-21T14:34:15 IST" name="Default test" finished-at="2025-03-21T14:34:31 IST" duration-ms="15559">
-      <class name="testcases.Login">
-        <test-method is-config="true" signature="setup()[pri:0, instance:testcases.Login@56673b2c]" started-at="2025-03-21T14:34:15 IST" name="setup" finished-at="2025-03-21T14:34:20 IST" duration-ms="4652" status="PASS">
+    <test started-at="2025-05-06T10:46:17 IST" name="Default test" finished-at="2025-05-06T10:46:49 IST" duration-ms="31518">
+      <class name="testcases.Leads">
+        <test-method is-config="true" signature="setup()[pri:0, instance:testcases.Leads@7a55af6b]" started-at="2025-05-06T10:46:17 IST" name="setup" finished-at="2025-05-06T10:46:21 IST" duration-ms="3713" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method signature="value()[pri:0, instance:testcases.Login@56673b2c]" started-at="2025-03-21T14:34:20 IST" name="value" finished-at="2025-03-21T14:34:26 IST" duration-ms="5590" status="PASS">
+        <test-method signature="login()[pri:0, instance:testcases.Leads@7a55af6b]" started-at="2025-05-06T10:46:21 IST" name="login" finished-at="2025-05-06T10:46:26 IST" duration-ms="4677" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- value -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:testcases.Login@56673b2c]" started-at="2025-03-21T14:34:26 IST" name="tearDown" finished-at="2025-03-21T14:34:31 IST" duration-ms="5244" status="PASS">
+        </test-method> <!-- login -->
+        <test-method signature="bulkactions()[pri:1, instance:testcases.Leads@7a55af6b]" started-at="2025-05-06T10:46:26 IST" name="bulkactions" finished-at="2025-05-06T10:46:44 IST" duration-ms="17798" status="FAIL">
+          <exception class="org.openqa.selenium.ElementClickInterceptedException">
+            <message>
+              <![CDATA[element click intercepted: Element <button type="button" class="grey-btn min-btn-width btn btn-secondary" style="font-size: 12px;">...</button> is not clickable at point (579, 168). Other element would receive the click: <div aria-hidden="true" class="MuiBackdrop-root MuiBackdrop-invisible MuiModal-backdrop css-esi9ax" style="opacity: 1; transition: opacity 225ms cubic-bezier(0.4, 0, 0.2, 1);"></div>
+  (Session info: chrome=135.0.7049.115)
+Build info: version: '4.27.0', revision: 'd6e718d134'
+System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.12'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [32867a18fde7752cf3e2cfc5a94ffdc3, clickElement {id=f.63A3D7EF0BA4229DCFFEA41BFD49AC61.d.3387B08EBB50A467AEB0BD405734E0C4.e.149}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 135.0.7049.115, chrome: {chromedriverVersion: 135.0.7049.114 (63fd8a7d9d0..., userDataDir: C:\Users\Admin\AppData\Loca...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:60562}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:60562/devtoo..., se:cdpVersion: 135.0.7049.115, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Element: [[ChromeDriver: chrome on windows (32867a18fde7752cf3e2cfc5a94ffdc3)] -> xpath: //button[text()='Bulk email']]
+Session ID: 32867a18fde7752cf3e2cfc5a94ffdc3]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[org.openqa.selenium.ElementClickInterceptedException: element click intercepted: Element <button type="button" class="grey-btn min-btn-width btn btn-secondary" style="font-size: 12px;">...</button> is not clickable at point (579, 168). Other element would receive the click: <div aria-hidden="true" class="MuiBackdrop-root MuiBackdrop-invisible MuiModal-backdrop css-esi9ax" style="opacity: 1; transition: opacity 225ms cubic-bezier(0.4, 0, 0.2, 1);"></div>
+  (Session info: chrome=135.0.7049.115)
+Build info: version: '4.27.0', revision: 'd6e718d134'
+System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.12'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [32867a18fde7752cf3e2cfc5a94ffdc3, clickElement {id=f.63A3D7EF0BA4229DCFFEA41BFD49AC61.d.3387B08EBB50A467AEB0BD405734E0C4.e.149}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 135.0.7049.115, chrome: {chromedriverVersion: 135.0.7049.114 (63fd8a7d9d0..., userDataDir: C:\Users\Admin\AppData\Loca...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:60562}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:60562/devtoo..., se:cdpVersion: 135.0.7049.115, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Element: [[ChromeDriver: chrome on windows (32867a18fde7752cf3e2cfc5a94ffdc3)] -> xpath: //button[text()='Bulk email']]
+Session ID: 32867a18fde7752cf3e2cfc5a94ffdc3
+at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
+at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
+at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)
+at org.openqa.selenium.remote.ErrorCodec.decode(ErrorCodec.java:167)
+at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:138)
+at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:50)
+at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:190)
+at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:216)
+at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:174)
+at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:545)
+at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:223)
+at org.openqa.selenium.remote.RemoteWebElement.click(RemoteWebElement.java:76)
+at testcases.Leads.bulkactions(Leads.java:800)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+at org.testng.TestRunner.privateRun(TestRunner.java:739)
+at org.testng.TestRunner.run(TestRunner.java:614)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
+at org.testng.SuiteRunner.run(SuiteRunner.java:312)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
+at org.testng.TestNG.runSuites(TestNG.java:1112)
+at org.testng.TestNG.run(TestNG.java:1079)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
+]]>
+            </full-stacktrace>
+          </exception> <!-- org.openqa.selenium.ElementClickInterceptedException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- bulkactions -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:testcases.Leads@7a55af6b]" started-at="2025-05-06T10:46:44 IST" name="tearDown" finished-at="2025-05-06T10:46:49 IST" duration-ms="5265" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-      </class> <!-- testcases.Login -->
+      </class> <!-- testcases.Leads -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

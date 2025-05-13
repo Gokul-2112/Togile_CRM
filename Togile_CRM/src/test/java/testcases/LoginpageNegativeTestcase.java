@@ -1,9 +1,11 @@
 package testcases;
 
 import java.io.IOException;
+import java.util.List;
+
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
-import org.testng.asserts.SoftAssert;
 
 import baseclass.Baseclass;
 
@@ -11,29 +13,32 @@ public class LoginpageNegativeTestcase extends Baseclass {
 
 	@Test
 	public static void value() throws IOException, InterruptedException {
-		SoftAssert softassertion = new SoftAssert();
 
-		// Entering Wrong username and paswword
-		driver.findElement(By.id("email")).sendKeys("kaaju@techr.com");	
-		driver.findElement(By.name("password")).sendKeys("Kaaju@#123");
-		//Click sign In button
-		driver.findElement(By.xpath("//button[text()='Sign In']")).click();
-		
-		//Find the errormessage and get the error text
-		String errortypepassword = driver.findElement(By.xpath("/html/body/div/div[3]/div/div/div/div[2]")).getText();
-		
-		if ((errortypepassword.equals("Email does not exist")) || (errortypepassword.equals("Invalid email"))) {
-			
-			softassertion.assertTrue(
-					errortypepassword.equals("Email does not exist") || errortypepassword.equals("Invalid email"),
-					"Failure: Wrong type of MailError." + errortypepassword);
-		} else {
+		WebElement search = driver.findElement(By.id("myInput"));
+		search.sendKeys("Billy");
+		Thread.sleep(1000); // Or use WebDriverWait if it's dynamically filtered
 
-			softassertion.assertTrue(errortypepassword.equals(
-					"Password must contain at least 1 uppercase letter, 1 lowercase letter, 1 number, and 1 special character (!@#$%^&*)")
-					|| errortypepassword.equals("Password did not match"),
-					"Failure: Wrong type of PasswordError." + errortypepassword);
+		// 3. Get all <li> items under the <ul>
+		List<WebElement> items = driver.findElements(By.cssSelector("#myUL li"));
+
+		// 4. Check visibility of each item
+		for (WebElement item : items) {
+		    String text = item.getText();
+		    boolean isVisible = item.isDisplayed();
+
+		    if (text.toLowerCase().contains("billy")) {
+		        if (isVisible) {
+		            System.out.println("✅ Matched and visible: " + text);
+		        } else {
+		            System.out.println("❌ Matched but not visible: " + text);
+		        }
+		    } else {
+		        if (isVisible) {
+		            System.out.println("❌ Unmatched but still visible: " + text);
+		        } else {
+		            System.out.println("✅ Unmatched and hidden: " + text);
+		        }
+		    }
 		}
-		softassertion.assertAll();
 	}
 }

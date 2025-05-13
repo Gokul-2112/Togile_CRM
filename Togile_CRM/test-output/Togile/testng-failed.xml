@@ -3,13 +3,13 @@
 <suite name="Failed suite [Togile]" guice-stage="DEVELOPMENT" verbose="10">
   <test thread-count="5" name="Login(failed)" verbose="10">
     <classes>
-      <class name="testcases.URL_landing_Page">
+      <class name="testcases.Leads">
         <methods>
           <include name="setup"/>
           <include name="tearDown"/>
-          <include name="error"/>
+          <include name="searchbar"/>
         </methods>
-      </class> <!-- testcases.URL_landing_Page -->
+      </class> <!-- testcases.Leads -->
     </classes>
   </test> <!-- Login(failed) -->
 </suite> <!-- Failed suite [Togile] -->

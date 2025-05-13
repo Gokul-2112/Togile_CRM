@@ -13,7 +13,7 @@ public class Organization extends Baseclass {
 
     @Test
     public void launch() throws IOException, InterruptedException {
-        Login.value();
+        Login.loginpage();
         Baseclass.waitingtime("(//a[@class='header-icon-hover'])[2]", null);
         driver.findElement(By.xpath("(//a[@class='header-icon-hover'])[2]")).click();
         System.out.println("Setting Section is Opened");

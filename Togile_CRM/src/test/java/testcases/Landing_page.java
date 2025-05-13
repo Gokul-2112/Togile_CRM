@@ -11,12 +11,12 @@ import baseclass.Baseclass;
 
 public class Landing_page extends Baseclass {
 	
-	SoftAssert softassertion = new SoftAssert();
+	static SoftAssert softassertion = new SoftAssert();
 
     @Test(priority = 0)
-    public void logo() throws IOException, InterruptedException {
+    public static void logo() throws IOException, InterruptedException {
 
-        Login.value();
+        Login.loginpage();
         Landing_page.waitingtime("//a[@class='main-logo']", "visible");
         // Find the Logo using locator
         WebElement daslogo = driver.findElement(By.xpath("//a[@class='main-logo']"));
@@ -40,7 +40,7 @@ public class Landing_page extends Baseclass {
     }
 
     @Test(priority = 2)
-    public void leads() throws IOException {
+    public static void leads() throws IOException {
         Landing_page.waitingtime("//a[text()='Leads']", null);
         driver.findElement(By.xpath("//a[text()='Leads']")).click();
         Landing_page.waitingtime("//div[text()='Leads']", null);
@@ -89,7 +89,7 @@ public class Landing_page extends Baseclass {
     public void report() throws IOException {
         Landing_page.waitingtime("//a[text()='Report']", null);
         driver.findElement(By.xpath("//a[text()='Report']")).click();
-        WebElement createreportbutton = driver.findElement(By.xpath("//button[text()='Create Report']"));
+        WebElement createreportbutton = driver.findElement(By.xpath("//div[text()='Create Report']"));
         String actualtext = createreportbutton.getText();
         String expectedtext ="Create Report";
         softassertion.assertEquals(actualtext, expectedtext, "Failure: The Report section is not opened");
@@ -100,8 +100,8 @@ public class Landing_page extends Baseclass {
     public void moreOption() throws IOException, InterruptedException {
         Landing_page.waitingtime("//button[@class='header-more-dot btn btn-secondary']", null);
         driver.findElement(By.xpath("//button[@class='header-more-dot btn btn-secondary']")).click();
-        Landing_page.waitingtime("(//div//li[@role='menuitem'])[7]/a", null);
-        WebElement threedotconfirm = driver.findElement(By.xpath("(//div//li[@role='menuitem'])[7]/a"));
+        Landing_page.waitingtime("(//div//li[@role='menuitem'])[7]", null);
+        WebElement threedotconfirm = driver.findElement(By.xpath("(//div//li[@role='menuitem'])[7]"));
         String actualtext = threedotconfirm.getText();
         String expectedtext ="Task";
         softassertion.assertEquals(actualtext, expectedtext, "Failure: The Three-Dot section is not opened");
@@ -109,8 +109,8 @@ public class Landing_page extends Baseclass {
         System.out.println("Three-Dot Button is Verified");
 
         Landing_page.waitingtime("//button[@class='header-more-dot btn btn-secondary']", null);
-        Landing_page.waitingtime("//a[text()='Task']", null);
-        driver.findElement(By.xpath("//a[text()='Task']")).click();
+        Landing_page.waitingtime("//li[text()='Task']", null);
+        driver.findElement(By.xpath("//li[text()='Task']")).click();
         Landing_page.waitingtime("//h1[text()='Tasks']", "visible");
         WebElement task = driver.findElement(By.xpath("//h1[text()='Tasks']"));
         String actualtask = task.getText();
@@ -121,8 +121,8 @@ public class Landing_page extends Baseclass {
 
         Landing_page.waitingtime("//button[@class='header-more-dot btn btn-secondary']", null);
         driver.findElement(By.xpath("//button[@class='header-more-dot btn btn-secondary']")).click();
-        Landing_page.waitingtime("//a[text()='Call Logs']", null);
-        driver.findElement(By.xpath("//a[text()='Call Logs']")).click();
+        Landing_page.waitingtime("//li[text()='Call Logs']", null);
+        driver.findElement(By.xpath("//li[text()='Call Logs']")).click();
         Landing_page.waitingtime("//h1[text()='Call Logs']", "visible");
         WebElement calllogs = driver.findElement(By.xpath("//h1[text()='Call Logs']"));
         String actualcalllogs = calllogs.getText();
@@ -133,8 +133,8 @@ public class Landing_page extends Baseclass {
 
         Landing_page.waitingtime("//button[@class='header-more-dot btn btn-secondary']", null);
         driver.findElement(By.xpath("//button[@class='header-more-dot btn btn-secondary']")).click();
-        Landing_page.waitingtime("//a[text()='Meetings']", null);
-        driver.findElement(By.xpath("//a[text()='Meetings']")).click();
+        Landing_page.waitingtime("//li[text()='Meetings']", null);
+        driver.findElement(By.xpath("//li[text()='Meetings']")).click();
         Landing_page.waitingtime("//h1[text()='Meetings']", "visible");
         WebElement meeting = driver.findElement(By.xpath("//h1[text()='Meetings']"));
         String actualmeeting = meeting.getText();
@@ -145,8 +145,8 @@ public class Landing_page extends Baseclass {
 
         Landing_page.waitingtime("//button[@class='header-more-dot btn btn-secondary']", null);
         driver.findElement(By.xpath("//button[@class='header-more-dot btn btn-secondary']")).click();
-        Landing_page.waitingtime("//a[text()='Mail']", null);
-        driver.findElement(By.xpath("//a[text()='Mail']")).click();
+        Landing_page.waitingtime("//li[text()='Mail']", null);
+        driver.findElement(By.xpath("//li[text()='Mail']")).click();
         Landing_page.waitingtime("//button[@class='blue-btn w-100 btn btn-secondary']", "visible");
         WebElement mail = driver.findElement(By.xpath("//button[text()='New Mail']"));
         String actualmail = mail.getText();
@@ -154,6 +154,18 @@ public class Landing_page extends Baseclass {
         softassertion.assertEquals(actualmail, expectedmail, "Failure: The Mail section is not opened");
         Landing_page.screenshot("//Landing Page//Mail", null, null);
         System.out.println(" *Mail Section is Verified");
+        
+        Landing_page.waitingtime("//button[@class='header-more-dot btn btn-secondary']", null);
+        driver.findElement(By.xpath("//button[@class='header-more-dot btn btn-secondary']")).click();
+        Landing_page.waitingtime("//li[text()='Calendar']", null);
+        driver.findElement(By.xpath("//li[text()='Calendar']")).click();
+        Landing_page.waitingtime("//button[text()='today']", "visible");
+        WebElement calender = driver.findElement(By.xpath("//button[text()='today']"));
+        String actualcalender = calender.getText();
+        String expectedcalender ="today";
+        softassertion.assertEquals(actualcalender, expectedcalender, "Failure: The Calender section is not opened");
+        Landing_page.screenshot("//Landing Page//Calender", null, null);
+        System.out.println(" *Calender Section is Verified");
     }
 
     @Test(priority = 9)
