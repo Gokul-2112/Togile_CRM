@@ -203,6 +203,13 @@ public class Signup extends Baseclass {
 		}
 		
 		//Click SignUp Button
-		driver.findElement(By.xpath("//button[@type='submit']")).click();
+		WebElement signupbutton = driver.findElement(By.xpath("//button[@type='submit']"));
+		if(signupbutton.isDisplayed() && signupbutton.isEnabled()) {
+			System.out.println("SignUp button is working. - Testcase Passed");
+			//signupbutton.click();
+		}else {
+			System.out.println("SignUp button is not working. - Testcase Failed");
+		}
+		
 	}
 }

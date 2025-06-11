@@ -3,8 +3,12 @@
 <suite name="Togile" verbose="10">
     <test name="Login">
         <classes>
-            <class name="testcases.Leads">
-            </class>
+            <class name="testcases.Login"/>
+            <class name="testcases.Signup"/>
+            <class name="testcases.Leads"/>
+            <class name="testcases.Deals"/>
+            <class name="testcases.Contact"/>
+            <class name="testcases.Company"/>
         </classes>
     </test>
 </suite>

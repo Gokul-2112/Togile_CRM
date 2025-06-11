@@ -55,11 +55,11 @@ function toggleAllBoxes() {
 <body>
 <h2 align='center'>Login</h2><table border='1' align="center">
 <tr>
-<td>Tests passed/Failed/Skipped:</td><td>1/1/0</td>
+<td>Tests passed/Failed/Skipped:</td><td>36/1/0</td>
 </tr><tr>
-<td>Started on:</td><td>Wed Apr 23 15:37:56 IST 2025</td>
+<td>Started on:</td><td>Wed Jun 11 16:33:38 IST 2025</td>
 </tr>
-<tr><td>Total time:</td><td>14 seconds (14415 ms)</td>
+<tr><td>Total time:</td><td>617 seconds (617820 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -76,33 +76,16 @@ function toggleAllBoxes() {
 <td><b>Instance</b></td>
 </tr>
 <tr>
-<td title='testcases.Leads.searchbar()'><b>searchbar</b><br>Test class: testcases.Leads</td>
-<td><div><pre>org.openqa.selenium.InvalidSelectorException: invalid selector: An invalid or illegal selector was specified
-  (Session info: chrome=135.0.7049.97)
-For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#invalid-selector-exception
+<td title='testcases.Leads.bulkactions()'><b>bulkactions</b><br>Test class: testcases.Leads</td>
+<td><div><pre>org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of element located by By.xpath: //div[@class=&apos;btn-close&apos;] (tried for 10 second(s) with 500 milliseconds interval)
 Build info: version: &apos;4.27.0&apos;, revision: &apos;d6e718d134&apos;
 System info: os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.12&apos;
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [c28cb2ca8ef6aa1aea7235dfc0a26e2c, findElement {using=css selector, value=/html/body/section/div[2]/div[2]/div[1]/div[1]/div[1]/div/div[1]/input}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 135.0.7049.97, chrome: {chromedriverVersion: 135.0.7049.97 (b41307079c9b..., userDataDir: C:\Users\Admin\AppData\Loca...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:62304}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:62304/devtoo..., se:cdpVersion: 135.0.7049.97, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: c28cb2ca8ef6aa1aea7235dfc0a26e2c
-	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
-	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
-	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
-	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
-	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)
-	at org.openqa.selenium.remote.ErrorCodec.decode(ErrorCodec.java:167)
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:138)
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:50)
-	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:190)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:216)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:174)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:545)
-	at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:165)
-	at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:59)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:368)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:362)
-	at testcases.Leads.searchbar(Leads.java:155)
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 137.0.7151.69, chrome: {chromedriverVersion: 137.0.7151.70 (dfa4dc56b2ab..., userDataDir: C:\Users\Admin\AppData\Loca...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:60479}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:60479/devtoo..., se:cdpVersion: 137.0.7151.69, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 0bd6b00f858d7c384e04f5ef51373b8a
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:84)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:228)
+	at testcases.Leads.bulkactions(Leads.java:756)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -131,33 +114,16 @@ Session ID: c28cb2ca8ef6aa1aea7235dfc0a26e2c
 	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
 	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
 	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
-</pre></div><a href='#' onClick='toggleBox("stack-trace215614514", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace215614514'><pre>org.openqa.selenium.InvalidSelectorException: invalid selector: An invalid or illegal selector was specified
-  (Session info: chrome=135.0.7049.97)
-For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#invalid-selector-exception
+</pre></div><a href='#' onClick='toggleBox("stack-trace48143526", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace48143526'><pre>org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of element located by By.xpath: //div[@class=&apos;btn-close&apos;] (tried for 10 second(s) with 500 milliseconds interval)
 Build info: version: &apos;4.27.0&apos;, revision: &apos;d6e718d134&apos;
 System info: os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.12&apos;
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [c28cb2ca8ef6aa1aea7235dfc0a26e2c, findElement {using=css selector, value=/html/body/section/div[2]/div[2]/div[1]/div[1]/div[1]/div/div[1]/input}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 135.0.7049.97, chrome: {chromedriverVersion: 135.0.7049.97 (b41307079c9b..., userDataDir: C:\Users\Admin\AppData\Loca...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:62304}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:62304/devtoo..., se:cdpVersion: 135.0.7049.97, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: c28cb2ca8ef6aa1aea7235dfc0a26e2c
-	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
-	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
-	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
-	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
-	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)
-	at org.openqa.selenium.remote.ErrorCodec.decode(ErrorCodec.java:167)
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:138)
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:50)
-	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:190)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:216)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:174)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:545)
-	at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:165)
-	at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:59)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:368)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:362)
-	at testcases.Leads.searchbar(Leads.java:155)
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 137.0.7151.69, chrome: {chromedriverVersion: 137.0.7151.70 (dfa4dc56b2ab..., userDataDir: C:\Users\Admin\AppData\Loca...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:60479}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:60479/devtoo..., se:cdpVersion: 137.0.7151.69, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 0bd6b00f858d7c384e04f5ef51373b8a
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:84)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:228)
+	at testcases.Leads.bulkactions(Leads.java:756)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -187,8 +153,8 @@ Session ID: c28cb2ca8ef6aa1aea7235dfc0a26e2c
 	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
 	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
 </pre></div></td>
-<td>1</td>
-<td>testcases.Leads@63f259c3</td></tr>
+<td>13</td>
+<td>testcases.Leads@6cce16f4</td></tr>
 </table><p>
 <table width='100%' border='1' class='invocation-passed'>
 <tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
@@ -199,10 +165,185 @@ Session ID: c28cb2ca8ef6aa1aea7235dfc0a26e2c
 <td><b>Instance</b></td>
 </tr>
 <tr>
-<td title='testcases.Leads.login()'><b>login</b><br>Test class: testcases.Leads</td>
+<td title='testcases.Contact.addcontact()'><b>addcontact</b><br>Test class: testcases.Contact</td>
+<td></td>
+<td>6</td>
+<td>testcases.Contact@291a7e3c</td></tr>
+<tr>
+<td title='testcases.Contact.columnselector()'><b>columnselector</b><br>Test class: testcases.Contact</td>
+<td></td>
+<td>9</td>
+<td>testcases.Contact@291a7e3c</td></tr>
+<tr>
+<td title='testcases.Company.refreshbutton()'><b>refreshbutton</b><br>Test class: testcases.Company</td>
+<td></td>
+<td>1</td>
+<td>testcases.Company@ca30bc1</td></tr>
+<tr>
+<td title='testcases.Deals.smartview()'><b>smartview</b><br>Test class: testcases.Deals</td>
+<td></td>
+<td>5</td>
+<td>testcases.Deals@7efaad5a</td></tr>
+<tr>
+<td title='testcases.Company.sorting()'><b>sorting</b><br>Test class: testcases.Company</td>
+<td></td>
+<td>22</td>
+<td>testcases.Company@ca30bc1</td></tr>
+<tr>
+<td title='testcases.Contact.smartview()'><b>smartview</b><br>Test class: testcases.Contact</td>
 <td></td>
 <td>4</td>
-<td>testcases.Leads@63f259c3</td></tr>
+<td>testcases.Contact@291a7e3c</td></tr>
+<tr>
+<td title='testcases.Leads.smartview()'><b>smartview</b><br>Test class: testcases.Leads</td>
+<td></td>
+<td>4</td>
+<td>testcases.Leads@6cce16f4</td></tr>
+<tr>
+<td title='testcases.Deals.login()'><b>login</b><br>Test class: testcases.Deals</td>
+<td></td>
+<td>4</td>
+<td>testcases.Deals@7efaad5a</td></tr>
+<tr>
+<td title='testcases.Company.addcompany()'><b>addcompany</b><br>Test class: testcases.Company</td>
+<td></td>
+<td>5</td>
+<td>testcases.Company@ca30bc1</td></tr>
+<tr>
+<td title='testcases.Deals.bulkactions()'><b>bulkactions</b><br>Test class: testcases.Deals</td>
+<td></td>
+<td>57</td>
+<td>testcases.Deals@7efaad5a</td></tr>
+<tr>
+<td title='testcases.Contact.bulkactions()'><b>bulkactions</b><br>Test class: testcases.Contact</td>
+<td></td>
+<td>72</td>
+<td>testcases.Contact@291a7e3c</td></tr>
+<tr>
+<td title='testcases.Login.loginpage()'><b>loginpage</b><br>Test class: testcases.Login</td>
+<td></td>
+<td>2</td>
+<td>testcases.Login@78641d23</td></tr>
+<tr>
+<td title='testcases.Leads.columnselector()'><b>columnselector</b><br>Test class: testcases.Leads</td>
+<td></td>
+<td>9</td>
+<td>testcases.Leads@6cce16f4</td></tr>
+<tr>
+<td title='testcases.Contact.draganddrop()'><b>draganddrop</b><br>Test class: testcases.Contact</td>
+<td></td>
+<td>1</td>
+<td>testcases.Contact@291a7e3c</td></tr>
+<tr>
+<td title='testcases.Company.columnselector()'><b>columnselector</b><br>Test class: testcases.Company</td>
+<td></td>
+<td>8</td>
+<td>testcases.Company@ca30bc1</td></tr>
+<tr>
+<td title='testcases.Company.draganddrop()'><b>draganddrop</b><br>Test class: testcases.Company</td>
+<td></td>
+<td>1</td>
+<td>testcases.Company@ca30bc1</td></tr>
+<tr>
+<td title='testcases.Deals.sorting()'><b>sorting</b><br>Test class: testcases.Deals</td>
+<td></td>
+<td>75</td>
+<td>testcases.Deals@7efaad5a</td></tr>
+<tr>
+<td title='testcases.Deals.columnselector()'><b>columnselector</b><br>Test class: testcases.Deals</td>
+<td></td>
+<td>9</td>
+<td>testcases.Deals@7efaad5a</td></tr>
+<tr>
+<td title='testcases.Leads.login()'><b>login</b><br>Test class: testcases.Leads</td>
+<td></td>
+<td>5</td>
+<td>testcases.Leads@6cce16f4</td></tr>
+<tr>
+<td title='testcases.Company.searchbar()'><b>searchbar</b><br>Test class: testcases.Company</td>
+<td></td>
+<td>23</td>
+<td>testcases.Company@ca30bc1</td></tr>
+<tr>
+<td title='testcases.Leads.draganddrop()'><b>draganddrop</b><br>Test class: testcases.Leads</td>
+<td></td>
+<td>1</td>
+<td>testcases.Leads@6cce16f4</td></tr>
+<tr>
+<td title='testcases.Contact.searchbar()'><b>searchbar</b><br>Test class: testcases.Contact</td>
+<td></td>
+<td>3</td>
+<td>testcases.Contact@291a7e3c</td></tr>
+<tr>
+<td title='testcases.Signup.signuppage()'><b>signuppage</b><br>Test class: testcases.Signup</td>
+<td></td>
+<td>25</td>
+<td>testcases.Signup@1869fbd2</td></tr>
+<tr>
+<td title='testcases.Contact.refreshbutton()'><b>refreshbutton</b><br>Test class: testcases.Contact</td>
+<td></td>
+<td>0</td>
+<td>testcases.Contact@291a7e3c</td></tr>
+<tr>
+<td title='testcases.Deals.searchbar()'><b>searchbar</b><br>Test class: testcases.Deals</td>
+<td></td>
+<td>3</td>
+<td>testcases.Deals@7efaad5a</td></tr>
+<tr>
+<td title='testcases.Company.smartview()'><b>smartview</b><br>Test class: testcases.Company</td>
+<td></td>
+<td>4</td>
+<td>testcases.Company@ca30bc1</td></tr>
+<tr>
+<td title='testcases.Leads.addlead()'><b>addlead</b><br>Test class: testcases.Leads</td>
+<td></td>
+<td>6</td>
+<td>testcases.Leads@6cce16f4</td></tr>
+<tr>
+<td title='testcases.Leads.searchbar()'><b>searchbar</b><br>Test class: testcases.Leads</td>
+<td></td>
+<td>2</td>
+<td>testcases.Leads@6cce16f4</td></tr>
+<tr>
+<td title='testcases.Contact.login()'><b>login</b><br>Test class: testcases.Contact</td>
+<td></td>
+<td>4</td>
+<td>testcases.Contact@291a7e3c</td></tr>
+<tr>
+<td title='testcases.Deals.draganddrop()'><b>draganddrop</b><br>Test class: testcases.Deals</td>
+<td></td>
+<td>2</td>
+<td>testcases.Deals@7efaad5a</td></tr>
+<tr>
+<td title='testcases.Deals.adddeal()'><b>adddeal</b><br>Test class: testcases.Deals</td>
+<td></td>
+<td>7</td>
+<td>testcases.Deals@7efaad5a</td></tr>
+<tr>
+<td title='testcases.Company.login()'><b>login</b><br>Test class: testcases.Company</td>
+<td></td>
+<td>4</td>
+<td>testcases.Company@ca30bc1</td></tr>
+<tr>
+<td title='testcases.Leads.sorting()'><b>sorting</b><br>Test class: testcases.Leads</td>
+<td></td>
+<td>53</td>
+<td>testcases.Leads@6cce16f4</td></tr>
+<tr>
+<td title='testcases.Company.bulkactions()'><b>bulkactions</b><br>Test class: testcases.Company</td>
+<td></td>
+<td>72</td>
+<td>testcases.Company@ca30bc1</td></tr>
+<tr>
+<td title='testcases.Leads.refreshbutton()'><b>refreshbutton</b><br>Test class: testcases.Leads</td>
+<td></td>
+<td>0</td>
+<td>testcases.Leads@6cce16f4</td></tr>
+<tr>
+<td title='testcases.Contact.sorting()'><b>sorting</b><br>Test class: testcases.Contact</td>
+<td></td>
+<td>35</td>
+<td>testcases.Contact@291a7e3c</td></tr>
 </table><p>
 </body>
 </html>

@@ -21,23 +21,26 @@ public class Leads extends Baseclass {
 		Landing_page.leads();
 	}
 
-	// @Test(testName = "Smartview")
+	@Test(priority = 1)
 	public void smartview() throws InterruptedException {
-
+		WebDriverWait waiting = new WebDriverWait(driver, Duration.ofSeconds(10));
+		driver.navigate().refresh();
 		System.out.println("🧪" + "SmartView Testcases");
 		WebElement smartviewmore = driver.findElement(By.xpath("//div[@class='plus-more-btn']"));
-		if (smartviewmore.isDisplayed() & smartviewmore.isEnabled()) {
+		if (smartviewmore.isDisplayed() && smartviewmore.isEnabled()) {
 			smartviewmore.click();
-			System.out.println("Smart View Button is Working./nTestcase Passed");
+			System.out.println("Smart View Button is Working." + "-" + "Testcase Passed");
 		} else {
-			System.out.println("Smart View Button is not working./nTestcase Failed");
+			System.out.println("Smart View Button is not working." + "-" + "Testcase Failed"
+					+ smartviewmore.isDisplayed() + "-" + smartviewmore.isEnabled());
 		}
 
 		WebElement smartviewsearchbar = driver.findElement(By.xpath("//input[@placeholder='search view']"));
-		if (smartviewsearchbar.isDisplayed() & smartviewsearchbar.isEnabled()) {
-			System.out.println("SmartView Search Bar is working./nTestcase Passed");
+		if (smartviewsearchbar.isDisplayed() && smartviewsearchbar.isEnabled()) {
+			System.out.println("SmartView Search Bar is working." + "-" + "Testcase Passed");
 		} else {
-			System.out.println("SmartView Search Bar is working./nTestcase Failed");
+			System.out.println("SmartView Search Bar is working." + "-" + "Testcase Failed"
+					+ smartviewsearchbar.isDisplayed() + "-" + smartviewsearchbar.isEnabled());
 		}
 		smartviewsearchbar.sendKeys("All");
 		Thread.sleep(1000); // Or use WebDriverWait if it's dynamically filtered
@@ -81,8 +84,8 @@ public class Leads extends Baseclass {
 		}
 
 		// Click checkbox and Save Button
-		WebElement Checkbox = driver
-				.findElement(By.xpath("(//div[@class='popover_tabs__sJB61']//input[@type='checkbox'])[2]"));
+		WebElement Checkbox = driver.findElement(By.xpath("(//div[@class='popover_tabs__sJB61']//input)[2]"));
+		Thread.sleep(1000);
 		Checkbox.click();
 		String expectedsmartviewtext = Checkbox.getText();
 		driver.findElement(By.xpath("//button[text()='Save']")).click();
@@ -92,14 +95,16 @@ public class Leads extends Baseclass {
 		String actualsmartviewtext = Actualsmartview.getText();
 
 		if (expectedsmartviewtext.equals(actualsmartviewtext)) {
-			System.out.println("SmartView Selected and Save correctly./nTestcase Passed");
+			System.out.println("SmartView Selected and Save correctly." + "-" + "Testcase Passed");
 		} else {
-			System.out.println("SmartView Selected and Save incorrectly./nTestcase Failed");
+			System.out.println("SmartView Selected and Save incorrectly." + "-" + "Testcase Failed" + "-"
+					+ expectedsmartviewtext + "-" + actualsmartviewtext);
 		}
 		if (Actualsmartview.isDisplayed() && Actualsmartview.isEnabled()) {
-			System.out.println("Selected SmartView Working./nTestcase Passed");
+			System.out.println("Selected SmartView Working." + "-" + "Testcase Passed");
 		} else {
-			System.out.println("Selected SmartView not Working./nTestcase Failed");
+			System.out.println("Selected SmartView not Working." + "-" + "Testcase Failed" + "-"
+					+ Actualsmartview.isDisplayed() + "-" + Actualsmartview.isEnabled());
 		}
 
 		// Buttons in smartview
@@ -125,20 +130,25 @@ public class Leads extends Baseclass {
 
 			// Final check to see if all buttons are working
 			if (allButtonsWorking) {
+				waiting.until(
+						ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[text()='Reset to default']")))
+						.click();
 				System.out.println("All buttons are working./nTestcase Passed");
 			} else {
-				System.out.println("One or more buttons are not working./nTestcase Failed");
+				System.out.println("One or more buttons are not working.Testcase Failed");
 			}
 		} catch (Exception e) {
 			System.out.println("Smartview Button Testcase Failed: " + e.getMessage());
 			e.printStackTrace();
 		}
 		System.out.println("✅" + "SmartView Testcases Executed");
+		System.out.println();
 	}
 
-	// @Test(priority = 1)
+	@Test(priority = 2)
 	public void searchbar() throws InterruptedException {
 
+		driver.navigate().refresh();
 		System.out.println("🧪" + "SearchBar Testcases");
 
 		WebElement searchbar = driver.findElement(By.xpath("(//input[@class='deBounceSearch form-control'])[2]"));
@@ -158,8 +168,9 @@ public class Leads extends Baseclass {
 
 		Thread.sleep(1000);
 
-		searchbar.click();
-		searchbar.sendKeys("Gokul");
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		wait.until(ExpectedConditions.elementToBeClickable(searchbar));
+		searchbar.sendKeys("Sourav");
 
 		Thread.sleep(1000);
 
@@ -173,7 +184,7 @@ public class Leads extends Baseclass {
 		// Assuming names and emails are aligned by index (i.e., listedFirstnames.get(i)
 		// matches listedEmails.get(i))
 		int count = Math.min(listedFirstnames.size(), listedEmails.size());
-		String searchTerm = "gokul";
+		String searchTerm = "sourav";
 
 		for (int i = 0; i < count; i++) {
 			WebElement nameElement = listedFirstnames.get(i);
@@ -213,27 +224,30 @@ public class Leads extends Baseclass {
 
 		WebElement Clearbutton = driver.findElement(By.xpath("//div[@class='deBounceSearchCross']"));
 
-		Clearbutton.click();
-
-		String searchbarvalue = searchbar.getText();
-
-		if (Clearbutton.isDisplayed() && Clearbutton.isEnabled() && searchbarvalue == null) {
+		// String searchbarvalue = searchbar.getText();
+		// WebElement Clearbutton1 = driver.findElement(By.xpath("//div[@class='deBounceSearchCross']"));
+		if (Clearbutton.isDisplayed() && Clearbutton.isEnabled()) {
 			System.out.println("SearchBar Clear Button Testcase Passed");
+			Clearbutton.click();
 		} else {
 			System.out.println("SearchBar Clear Button Testcase Failed");
 		}
-
 		System.out.println("✅" + "Search Bar Testcases Executed");
-
+		System.out.println();
 	}
 
+	@Test(priority = 3)
 	public void columnselector() throws InterruptedException {
 
+		driver.navigate().refresh();
 		System.out.println("🧪" + "Column Selector Testcases");
 		WebElement columnselectorbutton = driver.findElement(By.xpath("//div[@class='global-column-selector-icon']"));
 
+		Thread.sleep(1000);
 		if (columnselectorbutton.isDisplayed() && columnselectorbutton.isEnabled()) {
-			columnselectorbutton.click();
+			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+			wait.until(ExpectedConditions.elementToBeClickable(columnselectorbutton)).click();
+			// columnselectorbutton.click();
 			System.out.println("Column Selector Button is Working.- TestCase Passed");
 		} else {
 			System.out.println("Column Selector Button is not Working.- Testcase Failed");
@@ -302,25 +316,31 @@ public class Leads extends Baseclass {
 
 		Thread.sleep(1000);
 
-		if (driver.findElement(By.xpath("(//div[@class='f-center-h100 c-pointer'])[12]")).getText()
+		if (driver.findElement(By.xpath("(//div[@class='f-center-h100 c-pointer'])[11]")).getText()
 				.equalsIgnoreCase("state")) {
 			System.out.println("Column Selector Woking. - TestCase Passed");
 		} else {
 			System.out.println("Column Selector Not Working.- Testcase Failed");
 		}
 
-		WebElement Resettodefaultbutton = driver.findElement(By.xpath("//button[text()='Save']"));
+		columnselectorbutton.click();
+		WebElement Resettodefaultbutton = driver.findElement(By.xpath("//button[text()='Reset to default']"));
 
 		if (Resettodefaultbutton.isDisplayed() && Resettodefaultbutton.isEnabled()) {
 			System.out.println("Reset to Default is Working. - Testcase Passed");
+			Thread.sleep(1000);
+			Resettodefaultbutton.click();
 		} else {
 			System.out.println("Reset to Default is Not Working. - Testcase Failed");
 		}
 		System.out.println("✅" + "Column Selector Testcases Executed");
+		System.out.println();
 	}
 
+	@Test(priority = 4)
 	public void refreshbutton() {
 
+		driver.navigate().refresh();
 		System.out.println("🧪" + "Refresh Button Testcases");
 
 		WebElement refresh = driver.findElement(By.xpath("//div[@class='global-refresh']"));
@@ -331,9 +351,12 @@ public class Leads extends Baseclass {
 			System.out.println("Refresh Button is not Working. - Testcase Failed");
 		}
 		System.out.println("✅" + "Refresh Button Testcases Executed");
+		System.out.println();
 	}
 
+	@Test(priority = 5)
 	public void addlead() throws InterruptedException {
+		driver.navigate().refresh();
 
 		System.out.println("🧪" + "Add Leads Testcases");
 
@@ -350,6 +373,7 @@ public class Leads extends Baseclass {
 			System.out.println("Add Leads Button is not Working. - Testcase Failed");
 		}
 
+		wait.until(ExpectedConditions.elementToBeClickable(addleadsbutton));
 		addleadsbutton.click();
 		if (driver.findElement(By.xpath("//div[@class='customcss-drawer-header']")).isDisplayed()) {
 			System.out.println("Add Lead Drawer Opened.- Testcase Passed");
@@ -358,7 +382,7 @@ public class Leads extends Baseclass {
 		}
 
 		// FirstName
-		WebElement firstname = driver.findElement(By.xpath("//input[@placeholder='Enter First Name']"));
+		WebElement firstname = driver.findElement(By.xpath("//div[label[text()='First Name']]//input"));
 		if (firstname.isDisplayed() && firstname.isEnabled()) {
 			System.out.println("First Name Field is Visible and Editable.- Testcase Passed");
 		} else {
@@ -371,9 +395,24 @@ public class Leads extends Baseclass {
 		} else {
 			System.out.println("FirstName Field Value Entered Not Correctly.- Testcase Failed");
 		}
+		//Leads.validation("Enter First Name", "Required Field");
+		// LastName
+		WebElement lastname = driver.findElement(By.xpath("//div[label[text()='Last Name']]//input"));
+		if (lastname.isDisplayed() && lastname.isEnabled()) {
+			System.out.println("Last Name Field is Visible and Editable.- Testcase Passed");
+		} else {
+			System.out.println("Last Name Field is not Visible and Editable.- Testcase Failed");
+		}
+		lastname.sendKeys(valuepro.getProperty("Lastname"));
+
+		if (lastname.getDomProperty("value").equals(valuepro.getProperty("Lastname"))) {
+			System.out.println("LastName Field Value Entered Correctly.- Testcase Passed");
+		} else {
+			System.out.println("LastName Field Value Entered Not Correctly.- Testcase Failed");
+		}
 
 		// Email
-		WebElement emailtextbox = driver.findElement(By.xpath("//input[@placeholder='Enter Email']"));
+		WebElement emailtextbox = driver.findElement(By.xpath("(//input[@class='form-control' and @type='text'])[3]"));
 		if (emailtextbox.isDisplayed() && emailtextbox.isEnabled()) {
 			System.out.println("Email Field is Visible and Editable.- Testcase Passed");
 		} else {
@@ -415,7 +454,8 @@ public class Leads extends Baseclass {
 		}
 
 		// Phone Number
-		WebElement phonenumbertextbox = driver.findElement(By.xpath("//input[@placeholder='Enter Phone Number']"));
+		WebElement phonenumbertextbox = driver
+				.findElement(By.xpath("(//input[@class='form-control' and @type='text'])[4]"));
 		if (phonenumbertextbox.isDisplayed() && phonenumbertextbox.isEnabled()) {
 			System.out.println("Phone Number Field is Visible and Editable.- Testcase Passed");
 		} else {
@@ -488,6 +528,7 @@ public class Leads extends Baseclass {
 		}
 
 		// Select Owner dropdown
+		Thread.sleep(1000);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//div[@class=' css-19bb58m'])[4]//input")));
 		WebElement Ownerdropdown = driver.findElement(By.xpath("(//div[@class=' css-19bb58m'])[4]//input"));
 		Ownerdropdown.click();
@@ -505,18 +546,18 @@ public class Leads extends Baseclass {
 		Ownerdropdown.sendKeys(valuepro.getProperty("Owner"));// Enter the Preferred Value
 		actions.sendKeys(Keys.ENTER).perform();// Wait and press ENTER to select the typed value
 
-		if (Ownerdropdown.getDomAttribute("value").equalsIgnoreCase(valuepro.getProperty("Owner"))) {
+		if ((driver.findElement(By.xpath("(//div[@class=' css-1dimb5e-singleValue'])[4]")).getText())
+				.equalsIgnoreCase(valuepro.getProperty("Owner"))) {
 			System.out.println("Owner Dropdown Value Selected Correctly - TestCase Passed");
 		} else {
 			System.out.println("Owner Dropdown Value Not Selected Correctly - TestCase Failed"
-					+ Ownerdropdown.getDomAttribute("value"));
+					+ (driver.findElement(By.xpath("(//div[@class=' css-1dimb5e-singleValue'])[4]")).getText()));
 		}
 
 		// Select Source dropdown
-		wait.until(ExpectedConditions.visibilityOfElementLocated(
-				By.xpath("/html/body/div/div[3]/div[1]/div[2]/div/div[8]/div/div/div[1]/div[2]")));
-		WebElement sourcedropdown = driver
-				.findElement(By.xpath("/html/body/div/div[3]/div[1]/div[2]/div/div[8]/div/div/div[1]/div[2]/input"));
+		Thread.sleep(1000);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//div[@class=' css-19bb58m']//input)[5]")));
+		WebElement sourcedropdown = driver.findElement(By.xpath("(//div[@class=' css-19bb58m']//input)[5]"));
 		sourcedropdown.click();
 		String Expanded5 = sourcedropdown.getDomAttribute("aria-expanded");// Dropdown Expand Check
 		if (sourcedropdown.isDisplayed() && sourcedropdown.isEnabled()) {
@@ -532,7 +573,7 @@ public class Leads extends Baseclass {
 		sourcedropdown.sendKeys(valuepro.getProperty("Source"));// Enter the Preferred Value
 		actions.sendKeys(Keys.ENTER).perform();// Wait and press ENTER to select the typed value
 
-		if ((driver.findElement(By.xpath("(//div[@class=' css-hlgwow'])[5]")).getText())
+		if ((driver.findElement(By.xpath("//div[@class=' css-hlgwow']//input")).getDomAttribute("value"))
 				.equalsIgnoreCase(valuepro.getProperty("Source"))) {
 			System.out.println("Source Dropdown Value Selected Correctly - TestCase Passed");
 		} else {
@@ -576,13 +617,13 @@ public class Leads extends Baseclass {
 		} else {
 			System.out.println("Lead Not Created. - Testcase Failed" + addedlead.getText());
 		}
-		// Leads.validation("Enter First Name", "Required Field");
 		System.out.println("✅" + "Add Leads Testcases Executed");
-
+		System.out.println();
 	}
 
-	// Sorting
+	@Test(priority = 6)
 	public void sorting() throws InterruptedException {
+		driver.navigate().refresh();
 		System.out.println("🧪" + "Sorting Testcases");
 
 		List<WebElement> allHeaders = driver
@@ -614,14 +655,20 @@ public class Leads extends Baseclass {
 					+ j + "]/div/div/div | //div[contains(@class,'ts-table-body-cell')][" + j + "]//a)"));
 
 			Leads.sorting(columnCells, headerName);
-
-			System.out.println("✅" + "Sorting Testcases Executed");
 		}
+		System.out.println("✅" + "Sorting Testcases Executed");
+		System.out.println();
 	}
 
+	@Test(priority = 7)
 	public void draganddrop() {
+		driver.navigate().refresh();
+
+		System.out.println("🧪" + "Drag and Drop Testcases");
 		Actions action = new Actions(driver);
 
+		WebElement fromelement = driver.findElement(By.xpath("(//div[@class='f-center-h100 c-pointer'])[2]"));
+		String fromelementvalue = fromelement.getText();
 		WebElement from = driver.findElement(By.xpath("(//div[@class='table_dragger__EwCXJ'])[4]"));
 		WebElement to = driver.findElement(By.xpath("(//div[@class='table_dragger__EwCXJ'])[7]"));
 		action.dragAndDrop(from, to).perform();
@@ -630,24 +677,33 @@ public class Leads extends Baseclass {
 
 		WebElement toelement = driver.findElement(By.xpath("(//div[@class='f-center-h100 c-pointer'])[5]"));
 
-		if (toelement.getText().equalsIgnoreCase("Last Name")) {
+		if (toelement.getText().equalsIgnoreCase(fromelementvalue)) {
 			System.out.println("Drag and Drop action Performed. - Testcase Passed");
+			action.dragAndDrop(driver.findElement(By.xpath("(//div[@class='table_dragger__EwCXJ'])[7]")), driver.findElement(By.xpath("(//div[@class='table_dragger__EwCXJ'])[4]"))).perform();
 		} else {
-			System.out.println("Drag and Drop action Not Performed. - Testcase Failed" + toelement.getText());
+			System.out.println(
+					"Drag and Drop action Not Performed. - Testcase Failed. " + toelement.getText() + fromelementvalue);
 		}
+		System.out.println("✅" + "Drag and Drop Testcases Executed");
+		System.out.println();
 	}
 
-	@Test(priority = 1)
+	@Test(priority = 8)
 	public void bulkactions() throws InterruptedException {
+		driver.navigate().refresh();
+
+		System.out.println("🧪" + "Bulk Action Testcases");
 		WebDriverWait waittime = new WebDriverWait(driver, Duration.ofSeconds(10));
-
-		waittime.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[text()='Bulk actions']")));
-
-		WebElement bulkactionbutton = driver.findElement(By.xpath("//button[text()='Bulk actions']"));
-
-		bulkactionbutton.click();
+		Actions action = new Actions(driver);
 
 ////////////////////////// Update Button  //////////////////////////////////
+		System.out.println("🧪" + "Update Button Testcases");
+		// Wait for Bulk action button
+		waittime.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[text()='Bulk actions']")));
+		WebElement bulkactionbutton = driver.findElement(By.xpath("//button[text()='Bulk actions']"));
+		bulkactionbutton.click();// Click the bulk action button
+
+		// Find and test the Update button
 		WebElement updatefieldbutton = driver.findElement(By.xpath("//button[text()='Update field']"));
 		if (updatefieldbutton.isDisplayed() && updatefieldbutton.isEnabled()) {
 			System.out.println("Update_Field button is working. - Testcase Passed");
@@ -656,9 +712,10 @@ public class Leads extends Baseclass {
 					+ updatefieldbutton.isDisplayed() + "-" + updatefieldbutton.isEnabled());
 		}
 
-		updatefieldbutton.click();
-		waittime.until(ExpectedConditions.visibilityOfElementLocated(
-				By.xpath("//div[@class=\"d-flex align-content-center align-items-center px-3 gap-2 py-2\"]")));
+		updatefieldbutton.click();// Click the Update button
+
+		// Wait for the error message and test the error message
+		By.xpath("//div[@class=\"d-flex align-content-center align-items-center px-3 gap-2 py-2\"]");
 		WebElement updateerrormesssage = driver.findElement(
 				By.xpath("//div[@class=\"d-flex align-content-center align-items-center px-3 gap-2 py-2\"]"));
 		if (updateerrormesssage.getText().equalsIgnoreCase("0 leads is selected")) {
@@ -667,9 +724,11 @@ public class Leads extends Baseclass {
 			System.out.println("Update field Error Message not displayed correctly. - Testcase Failed");
 		}
 
-		driver.findElement(By.id("check-all")).click();
-		updatefieldbutton.click();
+		// Select any lead
+		driver.findElement(By.xpath("(//input[@type='checkbox'])[3]")).click();
+		updatefieldbutton.click();// Click the update field button
 
+		// Entering the field on dropdown
 		if ((driver.findElement(By.xpath("//div[@class='drawer_title__Jj9gY']")).isDisplayed())) {
 			driver.findElement(By.className("css-13cymwt-control")).click();
 
@@ -678,6 +737,8 @@ public class Leads extends Baseclass {
 					ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class=' css-19bb58m']//input")));
 			option.sendKeys("First Name");
 			option.sendKeys(Keys.ENTER);
+			waittime.until(ExpectedConditions
+					.visibilityOfElementLocated(By.xpath("//div[@class='update-field-drawer_updateFieldBox__IHlXH']")));
 			if ((driver.findElement(By.xpath("//div[@class='update-field-drawer_updateFieldBox__IHlXH']")).getText())
 					.equalsIgnoreCase("First Name")) {
 				System.out.println("Dropdown in the Update field is working. - TestCase Passed");
@@ -689,7 +750,10 @@ public class Leads extends Baseclass {
 			System.out.println("Update is not Opened. - Testcase Failed.");
 		}
 
-		WebElement clearbutton = driver.findElement(By.xpath("//div[@class='btn-close']"));
+		Thread.sleep(1000);
+		// Find and test the clear button of selected field
+		WebElement clearbutton = waittime
+				.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='btn-close']")));
 		if (clearbutton.isDisplayed() && clearbutton.isEnabled()) {
 			clearbutton.click();
 			System.out.println("Clear Button is working. - Testcase Passed");
@@ -697,9 +761,10 @@ public class Leads extends Baseclass {
 			System.out.println("Clear Button is not working. - Testcase Passed");
 		}
 
-		WebElement verifycheckbox = driver.findElement(By.xpath("//div[@class='drawer_confirmBox__i63bR']//input"));
-		WebElement cancelbutton = driver.findElement(By.xpath("//button[@class='light-btn btn btn-secondary']"));
-		WebElement updatebutton = driver.findElement(By.xpath("//button[text()='Update']"));
+		// Find and test the element
+		WebElement verifycheckbox = driver.findElement(By.xpath("//div[@class='drawer_confirmBox__i63bR']//input"));// Checkbox
+		WebElement cancelbutton = driver.findElement(By.xpath("//button[@class='light-btn btn btn-secondary']"));// Cancel
+		WebElement updatebutton = driver.findElement(By.xpath("//button[text()='Update']"));// Update
 
 		if (verifycheckbox.isDisplayed() && verifycheckbox.isEnabled()) {
 			verifycheckbox.click();
@@ -720,21 +785,29 @@ public class Leads extends Baseclass {
 		} else {
 			System.out.println("Verify Checkbox is not working. - Testcase Failed");
 		}
-		driver.findElement(By.id("check-all")).click();
+
+		driver.navigate().refresh();
+		System.out.println("✅" + "Update Button Testcases Executed");
 		System.out.println();
 
 /////////////// Add Tags Button  ///////////////////////////////////
+		System.out.println("🧪" + "Add Tags Button Testcases");
+		// Wait the bulk action button
 		waittime.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[text()='Bulk actions']")));
 		Thread.sleep(1000);
-		driver.findElement(By.xpath("//button[text()='Bulk actions']")).click();
-		WebElement addtagsbutton = driver.findElement(By.xpath("//button[text()='Add tags']"));
+		driver.findElement(By.xpath("//button[text()='Bulk actions']")).click();// Click the bulk action button
+
+		// Find and test the Tag button
+		WebElement addtagsbutton = driver.findElement(By.xpath("//button[text()='Add tags']"));// locator
 		if (addtagsbutton.isDisplayed() && addtagsbutton.isEnabled()) {
 			System.out.println("Add_Tags button is working. - Testcase Passed");
 		} else {
 			System.out.println("Add_Tags button is not working. - Testcase Failed" + "-" + addtagsbutton.isDisplayed()
 					+ "-" + addtagsbutton.isEnabled());
 		}
-		addtagsbutton.click();
+		addtagsbutton.click();// Click the Tag Button
+
+		// Wait for error messga and test it
 		waittime.until(ExpectedConditions.visibilityOfElementLocated(
 				By.xpath("//div[@class='d-flex align-content-center align-items-center px-3 gap-2 py-2']")));
 		WebElement addtagerrormesssage = driver.findElement(
@@ -744,20 +817,33 @@ public class Leads extends Baseclass {
 		} else {
 			System.out.println("Add tags Error Message not displayed correctly. - Testcase Failed");
 		}
-		driver.findElement(By.id("check-6811e5aef54c18dca27b368d")).click();
+
+		// Select any Lead
+		driver.findElement(By.xpath("(//input[@type='checkbox'])[3]")).click();
 		Thread.sleep(2000);
 		WebElement addtagbutton = waittime
-				.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[text()='Add tags']")));
-		addtagbutton.click();
+				.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[text()='Add tags']")));// Wait
+																												// for
+																												// the
+																												// Tag
+																												// button
+		addtagbutton.click();// Click the Tag button
 		Thread.sleep(2000);
-		WebElement addtaginputdropdown = driver.findElement(By.xpath("//div[@class=' css-19bb58m']//input"));
-		addtaginputdropdown.sendKeys("Fresh Lead");
+		WebElement addtaginputdropdown = driver.findElement(By.xpath("//div[@class=' css-19bb58m']//input"));// Check
+																												// the
+																												// dropdwn
+																												// of
+																												// Tag
+		addtaginputdropdown.sendKeys("Fresh Lead");// Enter the Value in dropdown
 		Thread.sleep(2000);
-		addtaginputdropdown.sendKeys(Keys.ENTER);
+		addtaginputdropdown.sendKeys(Keys.ENTER);// Select the value
 
-		WebElement addtagupdatebutton = driver.findElement(By.xpath("//button[@class='blue-btn btn btn-secondary']"));
+		// Find and test the other element
+		WebElement addtagupdatebutton = driver.findElement(By.xpath("//button[@class='blue-btn btn btn-secondary']"));// Update
+																														// button
 		WebElement addtagcancelbutton = driver
-				.findElement(By.xpath("//button[@class='light-btn border-radius-4px btn btn-secondary']"));
+				.findElement(By.xpath("//button[@class='light-btn border-radius-4px btn btn-secondary']"));// Cancel
+																											// button
 
 		if ((addtagupdatebutton.isDisplayed() && addtagcancelbutton.isEnabled())
 				&& (addtagcancelbutton.isDisplayed() && addtagcancelbutton.isEnabled())) {
@@ -766,19 +852,24 @@ public class Leads extends Baseclass {
 			System.out.println("Add_Tag Update and Cancel button is not working. - Testcase Failed");
 		}
 		Thread.sleep(2000);
-		addtagupdatebutton.click();
+		addtagupdatebutton.click();// Click the update button
 
+		// Click the Bulk acion button
 		driver.findElement(By.xpath("//button[text()='Bulk actions']")).click();
 		Thread.sleep(2000);
 
-		driver.findElement(By.id("check-6811e5aef54c18dca27b368d")).click();
+		// Select any Lead
+		driver.findElement(By.xpath("(//input[@type='checkbox'])[2]")).click();
 		waittime.until(ExpectedConditions.visibilityOfElementLocated(
 				By.xpath("//button[@class='fill-svg-btn min-btn-width btn btn-secondary']"))).click();
 
-		WebElement addtagbutton2 = driver.findElement(By.xpath("//div[text()='Add Tags']"));
-		WebElement removetagbutton = driver.findElement(By.xpath("//div[text()='Remove Tags']"));
+		WebElement addtagbutton2 = driver.findElement(By.xpath("//div[text()='Add Tags']"));// check the Add Tag button
+																							// on dropdown
+		WebElement removetagbutton = driver.findElement(By.xpath("//div[text()='Remove Tags']"));// check the Remove Tag
+																									// button on
+																									// dropdown
 
-		waittime.until(ExpectedConditions.visibilityOf(addtagbutton2));
+		waittime.until(ExpectedConditions.visibilityOf(addtagbutton2));// Wait for the Add Tag button on dropdown
 
 		if ((addtagbutton2.isDisplayed() && addtagbutton2.isEnabled())
 				&& (removetagbutton.isDisplayed() && removetagbutton.isEnabled())) {
@@ -786,10 +877,18 @@ public class Leads extends Baseclass {
 		} else {
 			System.out.println("Add_Tag moreoption button is not working. - Testcase Failed");
 		}
-
+		driver.navigate().refresh();
+		System.out.println("✅" + "Add Tags Button Testcases Executed");
 		System.out.println();
 
 //////////////////// BulkEmail Button  //////////////////////////////////
+		System.out.println("🧪" + "Bulk Email button Testcases");
+		// Wait the bulk action button
+		waittime.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[text()='Bulk actions']")));
+		driver.findElement(By.xpath("//button[text()='Bulk actions']")).click();// Click the bulk action button
+		Thread.sleep(1000);
+
+		// Find the locator of Bulk email and click the bulk email button
 		WebElement bulkemailbutton = driver.findElement(By.xpath("//button[text()='Bulk email']"));
 		if (bulkemailbutton.isDisplayed() && bulkemailbutton.isEnabled()) {
 			System.out.println("Bulk_Email button is working. - Testcase Passed");
@@ -797,9 +896,15 @@ public class Leads extends Baseclass {
 			System.out.println("Bulk_Email button is not working. - Testcase Failed" + "-"
 					+ bulkemailbutton.isDisplayed() + "-" + bulkemailbutton.isEnabled());
 		}
-		bulkemailbutton.click();
+		// Wait for the Bulk email button and check the error message
+		waittime.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[text()='Bulk email']")));
+		driver.findElement(By.xpath("//button[text()='Bulk email']")).click();
 		waittime.until(ExpectedConditions.visibilityOfElementLocated(
-				By.xpath("//div[@class=\"d-flex align-content-center align-items-center px-3 gap-2 py-2\"]")));
+				By.xpath("//div[@class=\"d-flex align-content-center align-items-center px-3 gap-2 py-2\"]")));// Waiting
+																												// for
+																												// the
+																												// error
+																												// message
 		WebElement bulkemailerrormesssage = driver.findElement(
 				By.xpath("//div[@class=\"d-flex align-content-center align-items-center px-3 gap-2 py-2\"]"));
 		if (bulkemailerrormesssage.getText().equalsIgnoreCase("0 leads is selected")) {
@@ -807,17 +912,125 @@ public class Leads extends Baseclass {
 		} else {
 			System.out.println("Bulk email Error Message not displayed correctly. - Testcase Failed");
 		}
+		// Select any Lead
+		driver.findElement(By.xpath("(//input[@type='checkbox'])[3]")).click();
+		waittime.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[text()='Bulk email']")));// wait
+																													// the
+																													// Bulk
+																													// Email
+																													// buton
+		driver.findElement(By.xpath("//button[text()='Bulk email']")).click();// wait the Bulk Email buton
+
+		// Check the Email drawer is opened
+		String bulkemailbox = driver.findElement(By.xpath("//div[@class='drawer_title__Jj9gY']")).getText();
+		if (bulkemailbox.equalsIgnoreCase("Send Email")) {
+			System.out.println("Bulk Email drawer opened. -Testcase Passed");
+		} else {
+			System.out.println("Bulk Email drawer not opened. -Testcase Failed");
+		}
+		// Check the Send Button
+		WebElement sendbutton = driver.findElement(By.xpath("//button[@type='submit']"));
+		if (sendbutton.isDisplayed() && sendbutton.isEnabled()) {
+			System.out.println("Send Button is working.-Testcase Passed");
+		} else {
+			System.out.println("Send Button is not working.-Testcase Failed  " + sendbutton.isDisplayed() + "-"
+					+ sendbutton.isEnabled());
+		}
+
+		// Find the tomail element and enter the email id.
+		WebElement tomail = driver.findElement(By.xpath("(//div[@class=' css-19bb58m']//input)[1]"));
+		tomail.sendKeys(valuepro.getProperty("Email-Id"));
+		tomail.sendKeys(Keys.ENTER);
+		
+		// Find the ccmail element and enter the email id.
+		WebElement ccmail = driver.findElement(By.xpath("(//div[@class=' css-19bb58m']//input)[2]"));
+		ccmail.sendKeys(valuepro.getProperty("ccmail-Id-Lead"));
+		ccmail.sendKeys(Keys.ENTER);
+
+		// Select the template
+		Thread.sleep(4000);
+		WebElement templateInput = waittime.until(ExpectedConditions.elementToBeClickable(By.xpath("(//div[@class=' css-19bb58m']//input)[3]")));
+		templateInput.click();
+		action.sendKeys(Keys.ARROW_DOWN).sendKeys(Keys.ENTER).perform();
+		Thread.sleep(4000);
+
+		// Wait for the selected value to be visible
+		String selectedtemplateText = "";
+		try {
+		    WebElement selectedTemplate = waittime.until(ExpectedConditions.visibilityOfElementLocated(
+		        By.xpath("//div[contains(@class,'-singleValue')]")));
+		    selectedtemplateText = selectedTemplate.getText().trim();
+		    System.out.println("Selected Text: " + selectedtemplateText);
+		} catch (Exception e) {
+		    System.out.println("No selected template element found.");
+		}
+
+		if (selectedtemplateText.equalsIgnoreCase("Select Template") || selectedtemplateText.isEmpty()) {
+			List<String> contentbuttonLabels = Arrays.asList("ql-bold", "ql-italic", "ql-underline", "ql-strike", "ql-blockquote","ql-link");
+
+			boolean allcontentbuttonLabels=true;
+			
+			for(String buttonlabel:contentbuttonLabels) {
+				WebElement contentbutton = waittime.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[@class='"+buttonlabel+"']")));
+				if(contentbutton.isDisplayed()&&contentbutton.isEnabled()) {
+					System.out.println(buttonlabel+" Button is working.");
+				}else {
+					allcontentbuttonLabels=false;
+					System.out.println(buttonlabel+"Button is not working");
+				}
+				
+			}
+			if(allcontentbuttonLabels) {
+				System.out.println("All Content Buttons are working. Testcase Passed");
+			}else {
+				System.out.println("Some Content Button are bot working. Testcase Passed");
+			}
+		    System.out.println("No template selected, entering content...");
+		    WebElement content = driver.findElement(By.xpath("//div[@class='ql-container ql-snow']//p"));
+		    content.sendKeys(valuepro.getProperty("Content-Lead"));
+		} else {
+		    System.out.println("Template selected: " + selectedtemplateText);
+		}
+		Thread.sleep(2000);
+		if(!selectedtemplateText.isEmpty()) {
+			System.out.println("Template Selected But Subject not Populated. TestCase Failed");
+			WebElement subject = driver.findElement(By.name("subject"));
+			subject.sendKeys(valuepro.getProperty("Subject-Lead"));
+			Thread.sleep(1000);
+			if(subject.getDomProperty("value").equalsIgnoreCase(valuepro.getProperty("Subject-Lead"))) {
+				System.out.println("Subject has been entered. Testcase Passed");
+			}else {
+				System.out.println("Subject has not been Entered.  Testcase Failed");
+			}
+			
+		}else {
+			System.out.println("Subject is Entered. TestCase Passed");
+		}
+		
+		sendbutton.click();// Click the send button.
+
+		Thread.sleep(2000);
+		driver.navigate().refresh();
+		System.out.println("✅" + "Bulk Email Testcases Executed");
 		System.out.println();
 
-		// SMS Button
-		WebElement smsbutton = driver.findElement(By.xpath("//button[text()='SMS']"));
+//////////////////// SMS Button////////////////////////////////////////
+		System.out.println("🧪" + "SMS Testcases");
+		// wait the Bulk action button
+		waittime.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[text()='Bulk actions']")));
+		driver.findElement(By.xpath("//button[text()='Bulk actions']")).click();// click the bulk action button
+		Thread.sleep(1000);
+		// Find the SMS button and check
+		WebElement smsbutton = waittime
+				.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[text()='SMS']")));
 		if (smsbutton.isDisplayed() && smsbutton.isEnabled()) {
 			System.out.println("SMS button is working. - Testcase Passed");
 		} else {
 			System.out.println("SMS button is not working. - Testcase Failed" + "-" + smsbutton.isDisplayed() + "-"
 					+ smsbutton.isEnabled());
 		}
-		smsbutton.click();
+		smsbutton.click();// Click the sms button
+		// Wait for the error message and check
 		waittime.until(ExpectedConditions.visibilityOfElementLocated(
 				By.xpath("//div[@class=\"d-flex align-content-center align-items-center px-3 gap-2 py-2\"]")));
 		WebElement smserrormesssage = driver.findElement(
@@ -827,9 +1040,44 @@ public class Leads extends Baseclass {
 		} else {
 			System.out.println("SMS Error Message not displayed correctly. - Testcase Failed");
 		}
+		// Select any lead
+		driver.findElement(By.xpath("(//input[@type='checkbox'])[3]")).click();
+		smsbutton.click();// Click the sms button
+
+		WebElement smsdropdown = waittime.until(ExpectedConditions.visibilityOfElementLocated(
+				By.xpath("(//div[@class='select template__input-container css-19bb58m']//input)[1]")));// Sms Dropdown
+																										// button
+		WebElement smssendbutton = waittime
+				.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[text()='Send']")));// Sms Send
+																											// button
+		WebElement smscancelbutton = waittime
+				.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[text()='Cancel']")));// Cancel
+																												// Button
+		if (smsdropdown.isDisplayed() && smsdropdown.isEnabled()) {
+			System.out.println("Sms Dropdown is working.-Testcase Passed");
+		} else {
+			System.out.println("Sms Dropdown is not working.-Testcase Failed");
+		}
+		if ((smssendbutton.isDisplayed() && smssendbutton.isEnabled())
+				&& (smscancelbutton.isDisplayed() && smscancelbutton.isEnabled())) {
+			System.out.println("Sms Cancel and Send Button is working.-Testcase Passed");
+		} else {
+			System.out.println("Sms Cancel and Send Button is not working.-Testcase Failed"
+					+ ((smssendbutton.isDisplayed() && smssendbutton.isEnabled())
+							&& (smscancelbutton.isDisplayed() && smscancelbutton.isEnabled())));
+		}
+		Thread.sleep(1000);
+		driver.navigate().refresh();
+		System.out.println("✅" + "SMS Testcases Executed");
 		System.out.println();
 
-		// Assign Button
+///////////////////////// Assign Button///////////////////////////////
+		System.out.println("🧪" + "Assign button Testcases");
+		//// wait the Bulk action button
+		waittime.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[text()='Bulk actions']")));
+		driver.findElement(By.xpath("//button[text()='Bulk actions']")).click();// Click the Bulk action button
+		Thread.sleep(1000);
+		// Find the Assign to button
 		WebElement assignbutton = driver.findElement(By.xpath("//button[text()='Assign to']"));
 		if (assignbutton.isDisplayed() && assignbutton.isEnabled()) {
 			System.out.println("Assign button is working. - Testcase Passed");
@@ -837,7 +1085,8 @@ public class Leads extends Baseclass {
 			System.out.println("Assign button is not working. - Testcase Failed" + "-" + assignbutton.isDisplayed()
 					+ "-" + assignbutton.isEnabled());
 		}
-		assignbutton.click();
+		assignbutton.click();// Click the Assign Button
+		// Check the error message
 		waittime.until(ExpectedConditions.visibilityOfElementLocated(
 				By.xpath("//div[@class=\"d-flex align-content-center align-items-center px-3 gap-2 py-2\"]")));
 		WebElement assignerrormesssage = driver.findElement(
@@ -847,9 +1096,67 @@ public class Leads extends Baseclass {
 		} else {
 			System.out.println("Assign to Error Message not displayed correctly. - Testcase Failed");
 		}
+		// Select any Lead
+		driver.findElement(By.xpath("(//input[@type='checkbox'])[3]")).click();
+
+		assignbutton.click();// Click the assign button
+
+		WebElement assigndropdown = waittime
+				.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class=' css-19bb58m']//input")));// Assign
+																														// Dropdown
+		WebElement assignupdatebutton = waittime
+				.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[text()='Update']")));// Update
+																												// button
+		WebElement assigncancelbutton = waittime
+				.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[text()='Cancel']")));// Cancel
+																												// button
+		if (assigndropdown.isDisplayed() && assigndropdown.isEnabled()) {
+			System.out.println("Assign Dropdown is working.-Testcase Passed");
+		} else {
+			System.out.println("Assign Dropdown is not working.-Testcase Failed");
+		}
+		if ((assignupdatebutton.isDisplayed() && assignupdatebutton.isEnabled())
+				&& (assigncancelbutton.isDisplayed() && assigncancelbutton.isEnabled())) {
+			System.out.println("Assign Cancel and Update Button is working.-Testcase Passed");
+		} else {
+			System.out.println("Assign Cancel and Update Button is not working.-Testcase Failed" + "-"
+					+ ((assignupdatebutton.isDisplayed() && assignupdatebutton.isEnabled())
+							&& (assigncancelbutton.isDisplayed() && assigncancelbutton.isEnabled())));
+		}
+
+		Thread.sleep(1000);
+		// Select the value from the dropdown
+		WebElement dropdown = driver.findElement(By.className("css-19bb58m"));
+		dropdown.click();// Click the dropdown
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+		WebElement optionselect = wait.until(ExpectedConditions.elementToBeClickable(
+				By.xpath("//div[contains(@class,'-option') and text()='" + valuepro.getProperty("Owner_Name") + "']")));// Select
+																														// specific
+																														// value
+		optionselect.click();// Click the value
+		Thread.sleep(2000);
+		assignupdatebutton.click();// Click the Update button
+		Thread.sleep(2000);
+		// Check the owner is updated of the lead
+		WebElement ownerdata = driver.findElement(By.xpath("(//div[@class='f-center-h100'])[3]"));// Find the element of
+																									// ownerof that lead
+		if (ownerdata.getText().equalsIgnoreCase(valuepro.getProperty("Owner_Name"))) {
+			System.out.println("Assign_to is working.- Testcase Passed");
+		} else {
+			System.out.println("Assign_to is not working.- Testcase Failed");
+		}
+		Thread.sleep(4000);
+		driver.navigate().refresh();
+		System.out.println("✅" + "Assign button Testcases Executed");
 		System.out.println();
 
-		// Merge Button
+//////////////////////////// Merge Button////////////////////////////////////
+		System.out.println("🧪" + "Merge Button Testcases");
+		// wait the Bulk action button
+		waittime.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[text()='Bulk actions']")));
+		driver.findElement(By.xpath("//button[text()='Bulk actions']")).click();// Click the Bulk action buton
+		Thread.sleep(1000);
+		// Find the merge button
 		WebElement mergebutton = driver.findElement(By.xpath("//button[text()='Merge']"));
 		if (mergebutton.isDisplayed() && mergebutton.isEnabled()) {
 			System.out.println("Merge button is working. - Testcase Passed");
@@ -857,7 +1164,9 @@ public class Leads extends Baseclass {
 			System.out.println("Merge button is not working. - Testcase Failed" + "-" + mergebutton.isDisplayed() + "-"
 					+ mergebutton.isEnabled());
 		}
-		mergebutton.click();
+
+		mergebutton.click();// Click the merge button
+		// Check the error message
 		waittime.until(ExpectedConditions.visibilityOfElementLocated(
 				By.xpath("//div[@class=\"d-flex align-content-center align-items-center px-3 gap-2 py-2\"]")));
 		WebElement mergeerrormesssage = driver.findElement(
@@ -867,9 +1176,47 @@ public class Leads extends Baseclass {
 		} else {
 			System.out.println("Merge Error Message not displayed correctly. - Testcase Failed");
 		}
+		// Select any Lead
+		driver.findElement(By.xpath("(//input[@type='checkbox'])[3]")).click();
+		mergebutton.click();// Click the merge button
+
+		WebElement mergedropdown = driver.findElement(By.xpath("//div[@class=' css-19bb58m']//input"));// Dropdown
+		WebElement mergecheckbox = driver.findElement(By.xpath("//div[@class='drawer_confirmBox__i63bR']//input"));// checkbox
+		WebElement mergeupdatebutton = driver.findElement(By.xpath("(//button[text()='Merge'])[2]"));// Update button
+		WebElement mergecancelbutton = driver.findElement(By.xpath("//button[text()='Cancel']"));// Cancel
+
+		if ((mergedropdown.isDisplayed() && mergedropdown.isEnabled())
+				&& (mergecheckbox.isDisplayed() && mergecheckbox.isEnabled())) {
+			System.out.println("Merge Dropdown and checkbox is working. - Testcase Passed");
+			Thread.sleep(1500);
+			waittime.until(ExpectedConditions.elementToBeClickable(mergecheckbox)).click();// Wait for the checkbox is
+																							// clickable
+		} else {
+			System.out.println("Merge Dropdown is and checkbox not working. - Testcase Failed" + "Dropdown - "
+					+ (mergedropdown.isDisplayed() && mergedropdown.isEnabled()) + "Checkbox - "
+					+ (mergecheckbox.isDisplayed() && mergecheckbox.isEnabled()));
+		}
+		Thread.sleep(1000);
+		if ((mergeupdatebutton.isDisplayed() && mergeupdatebutton.isEnabled())
+				&& (mergecancelbutton.isDisplayed() && mergecancelbutton.isEnabled())) {
+			System.out.println("Merge_Update and Cancel is working. - Testcase Passed");
+		} else {
+			System.out.println("Merge_Update and Cancel is not working. - Testcase Failed" + "Update Button - "
+					+ (mergeupdatebutton.isDisplayed() && mergeupdatebutton.isEnabled()) + "Cancel Button - "
+					+ (mergecancelbutton.isDisplayed() && mergecancelbutton.isEnabled()));
+		}
+
+		driver.navigate().refresh();
+		System.out.println("✅" + "Merge Testcases Executed");
 		System.out.println();
 
-		// Delete Button
+/////////////////////// Delete Button////////////////////////////////
+		System.out.println("🧪" + "Delete Testcases");
+		// wait the Bulk action button
+		waittime.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[text()='Bulk actions']")));
+		driver.findElement(By.xpath("//button[text()='Bulk actions']")).click();// Click the Bulk action button
+		Thread.sleep(1000);
+		// Find the Delete buton
 		WebElement deletebutton = driver.findElement(By.xpath("//button[text()='Delete']"));
 		if (deletebutton.isDisplayed() && deletebutton.isEnabled()) {
 			System.out.println("Delete button is working. - Testcase Passed");
@@ -877,9 +1224,11 @@ public class Leads extends Baseclass {
 			System.out.println("Delete button is not working. - Testcase Failed" + "-" + deletebutton.isDisplayed()
 					+ "-" + deletebutton.isEnabled());
 		}
-		deletebutton.click();
+		deletebutton.click();// Click the delete button
+		// Wait for the error message
 		waittime.until(ExpectedConditions.visibilityOfElementLocated(
 				By.xpath("//div[@class=\"d-flex align-content-center align-items-center px-3 gap-2 py-2\"]")));
+		// Find the locator of error message and check
 		WebElement deleteerrormesssage = driver.findElement(
 				By.xpath("//div[@class=\"d-flex align-content-center align-items-center px-3 gap-2 py-2\"]"));
 		if (deleteerrormesssage.getText().equalsIgnoreCase("0 leads is selected")) {
@@ -887,9 +1236,62 @@ public class Leads extends Baseclass {
 		} else {
 			System.out.println("Delete Error Message not displayed correctly. - Testcase Failed");
 		}
+
+		// Get the data of lead which is going to be delete
+		WebElement deletedbeforedata = driver
+				.findElement(By.xpath("(//div[@class='f-center-h100'])[4]"));
+		String deletedbeforevalue = deletedbeforedata.getText();// Get the value of that Lead-Firstname
+
+		driver.findElement(By.xpath("(//input[@type='checkbox'])[3]")).click();// Select the lead
+		deletebutton.click();// Click the delete button
+
+		Thread.sleep(2000);
+		// Find and check the checkbox of delete
+		WebElement deletecheckbox = waittime.until(
+				ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='pb-4 modal-body']//input")));
+		if (deletecheckbox.isDisplayed() && deletecheckbox.isEnabled()) {
+			System.out.println("Delete Checkbox is working. - Testcase Passed");
+			deletecheckbox.click();
+		} else {
+			System.out.println("Delete Checkbox is not working. - Testcase Failed");
+		}
+
+		WebElement deletecancelbutton = driver.findElement(By.xpath("//button[text()='Cancel']"));// Cancel button
+		WebElement deleteconfirmbutton = driver.findElement(By.xpath("(//button[text()='Delete'])[2]"));// Delete button
+
+		if ((deleteconfirmbutton.isDisplayed() && deleteconfirmbutton.isEnabled())
+				&& (deletecancelbutton.isDisplayed() && deletecancelbutton.isEnabled())) {
+			System.out.println("Delete - Confirm and Cancel button are working.- Testcase Passed");
+			deleteconfirmbutton.click();
+		} else {
+			System.out.println("Delete - Confirm and Cancel button are not working.- Testcase Failed"
+					+ "Delete Button - " + (deleteconfirmbutton.isDisplayed() && deleteconfirmbutton.isEnabled())
+					+ "Cancel button - " + (deletecancelbutton.isDisplayed() && deletecancelbutton.isEnabled()));
+		}
+		Thread.sleep(2000);
+		WebElement deletedafterdata = driver
+				.findElement(By.xpath("(//div[@class='f-center-h100'])[4]"));
+		String deletedaftervalue = deletedafterdata.getText();// Get the value of that lead after delete function happened
+		// Compare both value and check
+		if (deletedbeforevalue.equalsIgnoreCase(deletedaftervalue)) {
+			System.out.println(
+					"Delete function is not working. - Testcase Failed" + deletedbeforevalue+"---" + deletedaftervalue);
+		} else {
+			System.out.println("Delete function is  working. - Testcase Passed");
+		}
+		driver.navigate().refresh();
+		System.out.println("✅" + "Delete Testcases Executed");
 		System.out.println();
 
+		
+
 		// Cancel Bulk Selection Button
+		System.out.println("🧪" + "Cancel bulk selection Testcases");
+		// wait the Bulk action button
+		waittime.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[text()='Bulk actions']")));
+		driver.findElement(By.xpath("//button[text()='Bulk actions']")).click();// Click the Bulk action button
+		Thread.sleep(1000);
+		// Find the Cancelbulkselection button and check
 		WebElement cancelbulkselectionbutton = driver.findElement(By.xpath("//button[text()='Cancel Bulk Selection']"));
 		if (cancelbulkselectionbutton.isDisplayed() && cancelbulkselectionbutton.isEnabled()) {
 			System.out.println("Cancel Bulk Selection button is working. - Testcase Passed");
@@ -897,11 +1299,15 @@ public class Leads extends Baseclass {
 			System.out.println("Cancel Bulk Selection button is not working. - Testcase Failed" + "-"
 					+ cancelbulkselectionbutton.isDisplayed() + "-" + cancelbulkselectionbutton.isEnabled());
 		}
+		System.out.println("✅" + "Cancel bulk selection Testcases Executed");
 		System.out.println();
 
 		// Overall checkbox
-		WebElement overallcheckbox = driver.findElement(By.id("selectAll"));
-		WebElement updatefield = driver.findElement(By.xpath("//button[text()='Update field']"));
+		System.out.println("🧪" + "Select All Testcases");
+		WebElement overallcheckbox = driver.findElement(By.id("selectAll"));// Seleteall checkbox
+		WebElement updatefield = driver.findElement(By.xpath("//button[text()='Update field']"));// Update field
+		WebElement assigntobutton = driver.findElement(By.xpath("//button[text()='Assign to']"));// Assign to button
+		WebElement overalldeletebutton = driver.findElement(By.xpath("//button[text()='Delete']"));// Delete button
 		if (overallcheckbox.isDisplayed() && overallcheckbox.isEnabled()) {
 			overallcheckbox.click();
 			if (updatefield.isDisplayed() && updatefield.isEnabled()) {
@@ -910,11 +1316,24 @@ public class Leads extends Baseclass {
 				System.out.println("Update_Field button is not working on bulkaction. - Testcase Failed" + "-"
 						+ updatefield.isDisplayed() + "-" + updatefield.isEnabled());
 			}
+			if (assigntobutton.isDisplayed() && assigntobutton.isEnabled()) {
+				System.out.println("Assign_to button is working on bulkaction. - Testcase Passed");
+			} else {
+				System.out.println("Assign_to button is not working on bulkaction. - Testcase Failed" + "-"
+						+ assigntobutton.isDisplayed() + "-" + assigntobutton.isEnabled());
+			}
+			if (overalldeletebutton.isDisplayed() && overalldeletebutton.isEnabled()) {
+				System.out.println("Delete button is working on bulkaction. - Testcase Passed");
+			} else {
+				System.out.println("Delete button is not working on bulkaction. - Testcase Failed" + "-"
+						+ overalldeletebutton.isDisplayed() + "-" + overalldeletebutton.isEnabled());
+			}
 			System.out.println("Overall Checkbox is working. - Testcase Passed");
 		} else {
 			System.out.println("Overall Checkbox is not working. - Testcase Failed");
 		}
+		System.out.println("✅" + "Select All Testcases Executed");
+		System.out.println("✅" + "Bulk Action Testcases Executed");
 		System.out.println();
-
 	}
 }

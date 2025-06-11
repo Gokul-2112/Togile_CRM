@@ -51,7 +51,7 @@ public class Landing_page extends Baseclass {
         Landing_page.screenshot("//Landing Page//Leads", null, null);
     }
     @Test(priority = 3)
-    public void deals() throws IOException, InterruptedException {
+    public static void deals() throws IOException, InterruptedException {
         Landing_page.waitingtime("//a[text()='Deals']", null);
         driver.findElement(By.xpath("//a[text()='Deals']")).click();
 		Landing_page.waitingtime("//div[text()='Deals']", null);
@@ -62,7 +62,7 @@ public class Landing_page extends Baseclass {
         Landing_page.screenshot("//Landing Page//Deals", null, null);
     }
     @Test(priority = 5)
-    public void contact() throws IOException {
+    public static void contact() throws IOException {
         Landing_page.waitingtime("//a[text()='Contacts']", null);
         driver.findElement(By.xpath("//a[text()='Contacts']")).click();
         Baseclass.waitingtime("//div[text()='Contacts']", null);
@@ -74,7 +74,7 @@ public class Landing_page extends Baseclass {
     }
 
     @Test(priority = 6)
-    public void company() throws IOException {
+    public static void company() throws IOException {
         Landing_page.waitingtime("//a[text()='Companies']", null);
         driver.findElement(By.xpath("//a[text()='Companies']")).click();
         Baseclass.waitingtime("//div[text()='Companies']", null);
