@@ -45,8 +45,7 @@ Togile_CRM/
 │
 ├── testng.xml # TestNG suite configuration
 ├── pom.xml # Maven build configuration
-├── Screenshot/ # (Optional) Stores captured screenshots
-├── Demo/ # (Optional) Demo or temporary files
+├── Screenshot 
 ├── test-output/ # TestNG default output
 
 **Pre-requisites**
